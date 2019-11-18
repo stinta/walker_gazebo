@@ -42,7 +42,7 @@ roslaunch walker_gazebo walker_gazebo.launch enableRosBag:=true
 ```
 
 ## Inspecting the rosbag file
-Bag file can be located at: [here](https://drive.google.com/file/d/1cRpIyNQf9hf_aEnLnw0K1w7JiLt4rd__/view?usp=sharing)
+Bag file can be located <a href="https://drive.google.com/file/d/1cRpIyNQf9hf_aEnLnw0K1w7JiLt4rd__/view?usp=sharing>here</a>
 To view highlevel details
 ```
 rosbag info record.bag
