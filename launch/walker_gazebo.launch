@@ -1,0 +1,10 @@
+<launch>
+<arg name="enableRosBag" default="false"/>
+<include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+      <arg name="world_file" value="$(find turtlebot_gazebo)/worlds/corridor.world"/>
+</include>
+
+<node pkg="walker_gazebo" name="walker_gazebo" type="walker_gazebo" launch-prefix="xterm -e"/>
+<node pkg="rosbag" name="rosbag" type="record" args="-a -O $(find walker_gazebo)/results/record.bag -x /camera/(.*)" if="$(arg enableRosBag)" />
+</launch>
+
