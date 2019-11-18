@@ -47,37 +47,35 @@
    /*
     * @brief constructor
     */
-    LaserReadHelper::LaserReadHelper(){
+    LaserReadHelper::LaserReadHelper() {
       wallInFront = false;
-    };
+    }
     /*
      * @brief virtual destructor
      */
-   LaserReadHelper::~LaserReadHelper() {
+  LaserReadHelper::~LaserReadHelper() {
      ROS_INFO_STREAM("LaserReadHelper shutting down");
-   }
-    
+  }
     /*
      * @brief Implements the callback funiton for LaserScan Subscriber
      *
      * @param message published by LaserScan
      */
-    void LaserReadHelper::processLaserScan(const sensor_msgs::LaserScan::ConstPtr& scan) {
-	ROS_INFO_STREAM("Extracting range distance ahead of range sensor "<< scan->ranges[320]);
-	if (scan->ranges[320] > 1.0) {
-	   wallInFront =  false;
-        } 
-        else {
+    void LaserReadHelper::processLaserScan
+                    (const sensor_msgs::LaserScan::ConstPtr& scan) {
+        ROS_INFO_STREAM("Extracting range distance ahead of range sensor "
+                        << scan->ranges[320]);
+        if (scan->ranges[320] > 1.0) {
+          wallInFront =  false;
+        } else {
            wallInFront = true;
            ROS_INFO_STREAM("Wall in front detected");
         }
-     } 
+     }
     /*
      * @brief Implements the callback funiton for LaserScan Subscriber
      *
      */
-    bool LaserReadHelper::getWallInFront(){
+    bool LaserReadHelper::getWallInFront() {
       return wallInFront;
     }
-	
-

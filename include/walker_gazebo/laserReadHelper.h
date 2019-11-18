@@ -44,12 +44,13 @@
  */
 
 class LaserReadHelper {
-  private:
+ private:
    /* 
     * @brief Local variable to indicate if the wall is in front of sensor
    **/
     bool wallInFront;
-  public:
+  
+ public:
    /*
     * @brief constructor
     */
@@ -58,7 +59,6 @@ class LaserReadHelper {
      * @brief virtual destructor
      */
     virtual ~LaserReadHelper();
-    
     /*
      * @brief Implements the callback funiton for LaserScan Subscriber
      *
@@ -70,7 +70,6 @@ class LaserReadHelper {
      *
      */
     bool getWallInFront();
-
 };
 
 

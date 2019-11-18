@@ -64,8 +64,7 @@ int main(int argc, char **argv) {
   /**
    * Class that implement the calback function
    */
-   auto lrhelper = LaserReadHelper();
-
+  auto lrhelper = LaserReadHelper();
   /**
    * The subscribe() call is how you tell ROS that you want to receive messages
    * on a given topic.  This invokes a call to the ROS
@@ -81,7 +80,8 @@ int main(int argc, char **argv) {
    * is the number of messages that will be buffered up before beginning to throw
    * away the oldest ones.
    */
-  auto sub = n.subscribe<sensor_msgs::LaserScan>("/scan", 1000, &LaserReadHelper::processLaserScan,&lrhelper);
+  auto sub = n.subscribe<sensor_msgs::LaserScan>("/scan", 1000,
+                               &LaserReadHelper::processLaserScan, &lrhelper);
 
 /**
    * The advertise() function is how you tell ROS that you want to
@@ -100,33 +100,30 @@ int main(int argc, char **argv) {
    * than we can send them, the number here specifies how many messages to
    * buffer up before throwing some away.
    */
-  auto vel_pub = n.advertise<geometry_msgs::Twist>("/mobile_base/commands/velocity", 1000);
+  auto vel_pub = n.advertise<geometry_msgs::Twist>
+                                 ("/mobile_base/commands/velocity", 1000);
   double lcl_rate = 10;
   geometry_msgs::Twist vel_msg;
   ros::Rate loop_rate(lcl_rate);
 
 while (ros::ok()) {
-
     ROS_DEBUG_STREAM("node walker_gazebo in ROS is running");
     /**
      * if the wall was detected rotate robot
      */
-    if (lrhelper.getWallInFront()){
-	
+    if (lrhelper.getWallInFront()) {
         ROS_DEBUG_STREAM("Obstacle Detected; turning ...");
         // stop moving forward
-	vel_msg.linear.x = 0.0;
+        vel_msg.linear.x = 0.0;
         // rotate laser
         vel_msg.angular.z = 1.0;
-    }
-   else { // no obstacle detected
-       //  move forward
-	vel_msg.linear.x = 0.5;
+    } else {
+        // no obstacle detected
+        //  move forward
+        vel_msg.linear.x = 0.5;
         // go straight
         vel_msg.angular.z = 0;
     }
-    
-
     /**
      * The publish() function is how you send messages. The parameter
      * is the message object. The type of this object must agree with the type
