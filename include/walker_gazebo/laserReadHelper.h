@@ -60,6 +60,6 @@ class LaserReadHelper {
      * @param message published by LaserScan
      */
     void processLaserScan(const sensor_msgs::LaserScan::ConstPtr&);
-}
+};
 
 
