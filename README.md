@@ -32,7 +32,6 @@ catkin_make
 ```
 cd <path to repository>
 source devel/setup.sh
-```
 roslaunch walker_gazebo walker_gazebo.launch
 ```
 
