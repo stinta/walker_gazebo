@@ -38,29 +38,29 @@
 
 #include "ros/ros.h"
 #include "sensor_msgs/LaserScan.h"
+#include "walker_gazebo/laserReadHelper.h"
 /**
  * This class implementes methods to read LaserScan Messages and determine 
  * the precense of an obtacle
  */
 
-class LaserReadHelper {
-  public:
    /*
     * @brief constructor
     */
-    LaserReadHelper(){};
+    LaserReadHelper::LaserReadHelper(){};
     /*
      * @brief virtual destructor
      */
-    virtual ~LaserReadHelper(){};
+   LaserReadHelper::~LaserReadHelper() {
+     ROS_INFO_STREAM("LaserReadHelper shutting down");
+   }
     
     /*
      * @brief Implements the callback funiton for LaserScan Subscriber
      *
      * @param message published by LaserScan
      */
-    void processLaserScan(const sensor_msgs::LaserScan::ConstPtr&) {};
-};
+    void LaserReadHelper::processLaserScan(const sensor_msgs::LaserScan::ConstPtr&) {};
 
 
 

@@ -137,7 +137,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/beginner_tutorials_node.cpp)
 
-add_executable(walker_gazebo src/walker_gazebo.cpp)
+add_executable(walker_gazebo src/walker_gazebo.cpp src/LaserReadHelper.cpp)
 target_link_libraries(walker_gazebo ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix

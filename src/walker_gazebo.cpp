@@ -37,13 +37,8 @@
  **/
 
 #include "ros/ros.h"
-#include "std_msgs/String.h"
-/**
- * This tutorial demonstrates simple receipt of messages over the ROS system.
- */
-void chatterCallback(const std_msgs::String::ConstPtr& msg) {
-  ROS_INFO_STREAM("I heard: [" <<  msg->data.c_str() <<"]");
-}
+#include "sensor_msgs/LaserScan.h"
+#include "walker_gazebo/laserReadHelper.h"
 
 int main(int argc, char **argv) {
   /**
@@ -66,6 +61,11 @@ int main(int argc, char **argv) {
   ros::NodeHandle n = ros::NodeHandle();
 
   /**
+   * Class that implement the calback function
+   */
+   auto lrhelper = LaserReadHelper();
+
+  /**
    * The subscribe() call is how you tell ROS that you want to receive messages
    * on a given topic.  This invokes a call to the ROS
    * master node, which keeps a registry of who is publishing and who
@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
    * is the number of messages that will be buffered up before beginning to throw
    * away the oldest ones.
    */
-  auto sub = n.subscribe("chatter", 1000, chatterCallback);
+  auto sub = n.subscribe<sensor_msgs::LaserScan>("/scan", 1000, &LaserReadHelper::processLaserScan,&lrhelper);
 
   /**
    * ros::spin() will enter a loop, pumping callbacks.  With this version, all
