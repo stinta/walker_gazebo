@@ -1,5 +1,3 @@
-./include/walker_gazebo/laserReadHelper.h:52:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
 Done processing ./include/walker_gazebo/laserReadHelper.h
 Done processing ./src/LaserReadHelper.cpp
 Done processing ./src/walker_gazebo.cpp
-Total errors found: 1
