@@ -106,10 +106,14 @@ int main(int argc, char **argv) {
   ros::Rate loop_rate(lcl_rate);
 
 while (ros::ok()) {
+
+    ROS_DEBUG_STREAM("node walker_gazebo in ROS is running");
     /**
      * if the wall was detected rotate robot
      */
     if (lrhelper.getWallInFront()){
+	
+        ROS_DEBUG_STREAM("Obstacle Detected; turning ...");
         // stop moving forward
 	vel_msg.linear.x = 0.0;
         // rotate laser
@@ -122,7 +126,6 @@ while (ros::ok()) {
         vel_msg.angular.z = 0;
     }
     
-    //ROS_INFO("%s", msg.data.c_str());
 
     /**
      * The publish() function is how you send messages. The parameter
@@ -131,7 +134,7 @@ while (ros::ok()) {
      * in the constructor above.
      */
      vel_pub.publish(vel_msg);
-
+    ROS_DEBUG_STREAM("velocity command was published");
 
     ros::spinOnce();
 
