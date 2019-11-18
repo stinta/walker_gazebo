@@ -113,11 +113,11 @@ while (ros::ok()) {
         // stop moving forward
 	vel_msg.linear.x = 0.0;
         // rotate laser
-        vel_msg.angular.z = 0.25;
+        vel_msg.angular.z = 1.0;
     }
    else { // no obstacle detected
        //  move forward
-	vel_msg.linear.x = 0.3;
+	vel_msg.linear.x = 0.5;
         // go straight
         vel_msg.angular.z = 0;
     }
