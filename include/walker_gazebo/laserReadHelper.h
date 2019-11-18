@@ -45,11 +45,9 @@
 
 class LaserReadHelper {
  private:
-   /* 
-    * @brief Local variable to indicate if the wall is in front of sensor
-   **/
-    bool wallInFront;
-  
+  // Local variable to indicate if the wall is in front of sensor
+  bool wallInFront;
+
  public:
    /*
     * @brief constructor
