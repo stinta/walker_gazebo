@@ -44,6 +44,11 @@
  */
 
 class LaserReadHelper {
+  private:
+   /* 
+    * @brief Local variable to indicate if the wall is in front of sensor
+   **/
+    bool wallInFront;
   public:
    /*
     * @brief constructor
@@ -60,6 +65,12 @@ class LaserReadHelper {
      * @param message published by LaserScan
      */
     void processLaserScan(const sensor_msgs::LaserScan::ConstPtr&);
+    /*
+     * @return return the wallInFront value
+     *
+     */
+    bool getWallInFront();
+
 };
 
 
